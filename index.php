@@ -14,11 +14,12 @@ $app->post('/fazerLogin/', function() use ( $app ) {
 	$login = json_decode($login, true);
 
 	$return = CPAService::validaLogin($login['usuario'], $login['senha']);
+
 	echo $return;
 });
 
 // Busca Disciplinas
-$app->get('/buscaDisciplinas/', function() use ( $app ) {
+$app->post('/buscaDisciplinas/', function() use ( $app ) {
 	$ID_ALUNO = $app->request()->getBody();
 	$ID_ALUNO = json_decode($ID_ALUNO, true);
 
