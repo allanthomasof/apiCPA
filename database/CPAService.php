@@ -5,7 +5,8 @@ class CPAService {
         $db = ConnectionFactory::getDB(); 
         $result = array();
 
-        $aluno = $db->ALUNO()->select("ID_ALUNO, NOME, CPA, PERIODO")->where("ID_ALUNO = $usuario AND SENHA = $senha");
+        $aluno = $db->ALUNO()->select("ID_ALUNO, NOME, CPA, PERIODO")
+                    ->where("ID_ALUNO = $usuario AND SENHA = $senha");
 
         if($data = $aluno->fetch()){
             echo json_encode(

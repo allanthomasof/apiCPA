@@ -9,7 +9,6 @@ require 'database/notorm/NotORM.php';
 
 $app = new \Slim\Slim();
 
-
 // Fazer Login
 $app->post('/fazerLogin/', function() use ( $app ) {
 	$login = $app->request()->getBody();
@@ -19,7 +18,6 @@ $app->post('/fazerLogin/', function() use ( $app ) {
 
 	echo $return;
 });
-
 
 // Fazer Login Administrador
 $app->post('/fazerLoginAdm/', function() use ( $app ) {
@@ -32,7 +30,6 @@ $app->post('/fazerLoginAdm/', function() use ( $app ) {
         echo 0;
 });
 
-
 // Busca Disciplinas
 $app->post('/buscaDisciplinas/', function() use ( $app ) {
 	$ID_ALUNO = $app->request()->getBody();
@@ -42,7 +39,6 @@ $app->post('/buscaDisciplinas/', function() use ( $app ) {
 	echo json_encode($return);
 });
 
-
 // Salvar Respostas no Banco de Dados
 $app->post('/salvarRespostas/', function() use ( $app ) {
 	$JSONRespostas = $app->request()->getBody();
@@ -51,18 +47,15 @@ $app->post('/salvarRespostas/', function() use ( $app ) {
     echo CPAService::salvarQuestionario($JSONRespostas);
 });
 
-
 // Verificar se a CPA está aberta
 $app->get('/verificaCPA/', function() use ( $app ) {
     echo CPAService::verificaCPA();
 });
 
-
 // Modifica o status da CPA
 $app->get('/alteraStatusCPA/', function() use ( $app ) {
     echo CPAService::alteraStatusCPA(CPAService::verificaCPA());
 });
-
 
 // Gerar Relatórios
 $app->post('/gerarRelatorio/', function() use ( $app ) {
@@ -71,13 +64,6 @@ $app->post('/gerarRelatorio/', function() use ( $app ) {
 
     echo ReportService::gerarRelatorio($relatorio);
 });
-
-
-
-
-
-
-
 
 $app->run();
 ?>
